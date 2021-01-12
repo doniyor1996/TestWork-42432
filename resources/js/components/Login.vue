@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <router-link to="/">back</router-link>
-        <button @click="login">login</button>
+        <button @click="_login">login</button>
     </div>
 </template>
 
@@ -22,7 +22,11 @@ export default {
     methods:{
         ...mapActions([
             'login'
-        ])
+        ]),
+        _login() {
+            this.login();
+            this.$router.push({name : 'home'});
+        }
     }
 }
 </script>
