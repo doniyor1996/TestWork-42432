@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/sanctum/csrf-cookie', \Laravel\Sanctum\Http\Controllers\CsrfCookieController::class . '@show')
+    ->middleware('web');
+
 Route::middleware('auth:sanctum')
     ->group(function () {
-        Route::get('/logout','App\Http\Controllers\UserController@logout')
+        Route::get('/logout','App\Http\Controllers\LoginController@logout')
             ->name('logout.api');
         Route::get('/user','App\Http\Controllers\UserController@userdata')
             ->name('user.api');

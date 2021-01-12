@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import _store from "../store";
 
 Vue.use(Router);
 
@@ -10,10 +11,30 @@ const _router = new Router({
             path: '/',
             name: 'home',
             components: {
-                default: () => import('../components/ExampleComponent')
+                default: () => import('../components/Main')
+            },
+            meta: {
+                needAuth: true
+            }
+        },
+        {
+            path: '/login',
+            name: 'login',
+            components: {
+                default: () => import('../components/Login')
             }
         },
     ]
 });
+
+_router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.needAuth)) {
+        if (_store.getters.is_authorised)
+            next()
+        else next('/login')
+    } else {
+        next()
+    }
+})
 
 export default _router;

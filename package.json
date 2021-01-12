@@ -25,5 +25,8 @@
         "vue-cli-plugin-element": "^1.0.1",
         "vue-router": "^3.4.9",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "vuex-persistedstate": "^4.0.0-beta.3"
     }
 }

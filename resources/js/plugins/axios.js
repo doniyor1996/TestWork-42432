@@ -1,9 +1,10 @@
 import axios from 'axios'
+import {BASE_URL} from "../config";
 
 let config = {
-	// baseURL: process.env.baseURL || process.env.apiUrl || "http://172.16.10.140:8080/alarm",
 	timeout: 15 * 1000, // Timeout
-	// withCredentials: true, // Check cross-site Access-Control
+	withCredentials: true, // Check cross-site Access-Control
+    baseURL: BASE_URL
 	// headers: {},
 };
 
@@ -31,5 +32,7 @@ _axios.interceptors.response.use(
 		return Promise.reject(error);
 	}
 );
+
+_axios.get('/sanctum/csrf-cookie').then(() => {});
 
 export default _axios;

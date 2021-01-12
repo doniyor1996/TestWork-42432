@@ -14,9 +14,7 @@
 		},
 		computed: {
 		},
-
 		created() {
-			this.$store.dispatch('UPDATE_ROUTES').then();
 		}
 	}
 </script>

@@ -1,9 +1,7 @@
 const resolve = dir => require('path').join(__dirname, dir);
 
 module.exports = {
-	publicPath: process.env.NODE_ENV === 'production'
-		? '/frog-admin/'
-		: '/',
+	publicPath: '/',
     configureWebpack: {
         entry: './resources/js/main.js'
     },
