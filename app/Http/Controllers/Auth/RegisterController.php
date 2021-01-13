@@ -21,12 +21,15 @@ class RegisterController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
+            ], [
+                'confirmed' => 'Пароль и подтверждение не совпадают',
+                'unique' => 'Пользователь с такой почтой уже зарегистрирован'
             ]);
 
             if($validator->fails()){
-                return response([
+                return response()->json([
                     'error' => $validator->errors()->all()
-                ], 422);
+                ]);
             }
 
             $request['password'] = Hash::make($request['password']);
@@ -35,14 +38,14 @@ class RegisterController extends Controller
 
             return response()->json([
                 'status_code' => 200,
-                'message' => 'Registration Successfull',
+                'message' => 'Вы успешно зарегистрировались',
             ]);
 
 
         }catch(Exception $error){
             return response()->json([
                 'status_code' => 500,
-                'message' => 'Error in Registration',
+                'message' => 'Ошибка при регистрации',
                 'error' => $error,
             ]);
         }

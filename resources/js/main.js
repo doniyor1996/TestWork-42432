@@ -4,11 +4,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
-import axios from './plugins/axios'
+import axios, {setToken} from './plugins/axios'
+import _store from "./store";
 
 Vue.config.productionTip = false;
 
 window.$axios = axios;
+
+if (_store.getters.access_token)
+    setToken(_store.getters.access_token)
 
 new Vue({
 	router,

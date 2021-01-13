@@ -24,6 +24,13 @@ const _router = new Router({
                 default: () => import('../components/Login')
             }
         },
+        {
+            path: '/register',
+            name: 'register',
+            components: {
+                default: () => import('../components/Register')
+            }
+        },
     ]
 });
 

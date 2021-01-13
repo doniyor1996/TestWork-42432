@@ -3,10 +3,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Тестовая работа</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        документация апи расположена на swaggerhub(не успел)
+                        <div class="list-group mt-4">
+                            <router-link class="list-group-item" to="/routes">Маршруты</router-link>
+                            <router-link class="list-group-item" to="/points">Точки</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
