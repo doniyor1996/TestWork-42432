@@ -6,12 +6,17 @@
             </div>
 
             <div class="card-body">
-                <form class="d-md-flex mb-4" @submit.prevent="formAction">
+                <form class="d-md-flex mb-4 align-items-center" id="route-form" @submit.prevent="formAction">
                     <input class="form-control" type="text" v-model="routeName" placeholder="Название маршрута"
                            required>
-                    <button class="btn btn-primary ml-2">
-                        {{ edit_id ? 'Сохранить' : 'Добавить' }}
-                    </button>
+                    <div class="ml-2">
+                        <button class="btn btn-primary">
+                            {{ edit_id ? 'Сохранить' : 'Добавить' }}
+                        </button>
+                        <button v-if="edit_id" @click.prevent="_editRoute({id:edit_id})" class="btn btn-light mt-2">
+                            Отменить
+                        </button>
+                    </div>
                 </form>
                 <div v-if="success" class="alert alert-success" role="alert">
                     {{success}}
@@ -131,8 +136,13 @@ export default {
             });
         },
         _editRoute(route) {
-            this.edit_id = route.id;
-            this.routeName = route.name;
+            if (this.edit_id === route.id) {
+                this.edit_id = '';
+                this.routeName = '';
+            } else {
+                this.edit_id = route.id;
+                this.routeName = route.name;
+            }
         },
         _updateRoute() {
             this.updateRoute({id: this.edit_id, name: this.routeName}).then(res => {
@@ -157,6 +167,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+#route-form .btn
+    width: 100%
+
 .routes
     list-style: none
     padding: 0
