@@ -69,7 +69,7 @@ export default {
         setCurrentPage({commit, dispatch}, number) {
             commit('SET_CURRENT_PAGE', number);
         },
-        itemsPerPage({commit, dispatch}, number) {
+        setItemsPerPage({commit, dispatch}, number) {
             commit('SET_ITEMS_PER_PAGE', number);
             dispatch('getRoutes');
         },

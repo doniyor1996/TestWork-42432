@@ -47,8 +47,16 @@
                         У вас нет ни одного маршрута
                     </div>
                 </template>
+                <div>
+                    показано {{page}} из {{totalPages}} страниц, на странице
+                    <select @change="_setItemsPerPage($event.target.value)" ref="perPageSelect">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                    </select>
+                </div>
                 <div v-if="totalPages > 1">
-                    показано {{page}} из {{totalPages}} страниц
                     <nav aria-label="...">
                         <ul class="pagination">
                             <li :class="'page-item' + (page === 1 ? ' disabled' : '')">
@@ -84,6 +92,7 @@ export default {
         this.page = this.$route.params.page > 0 ? this.$route.params.page * 1 : 1;
         this.setCurrentPage(this.page);
         this.getRoutes();
+        this.$refs.perPageSelect.value = this.itemsPerPage;
     },
     updated() {
         if (this.page > 1 && this.routes.length === 0)
@@ -102,7 +111,8 @@ export default {
         ...mapGetters([
             'routes',
             'totalPages',
-            'loading'
+            'loading',
+            'itemsPerPage'
         ])
     },
     methods: {
@@ -111,7 +121,8 @@ export default {
             'createRoute',
             'updateRoute',
             'deleteRoute',
-            'setCurrentPage'
+            'setCurrentPage',
+            'setItemsPerPage'
         ]),
         addSuccessMessage(message) {
             this.success = message;
@@ -167,6 +178,11 @@ export default {
                         : this.addErrorMessage('Ошибка при удалении');
                 });
         },
+        _setItemsPerPage(number) {
+            this.setItemsPerPage(number);
+            this.setCurrentPage(1);
+            this.getRoutes();
+        }
     }
 }
 </script>
