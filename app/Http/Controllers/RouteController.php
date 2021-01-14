@@ -10,9 +10,17 @@ class RouteController extends Controller
 {
     public function index(Request $request)
     {
+        $start = $request->query('start');
+        $end = $request->query('limit');
+
         return response()->json([
             'status_code' => 200,
-            'routes' => Route::where('userID', $request->user()->id)->get(),
+            'limit' => "$start, $end",
+            'routes' => Route::where('userID', $request->user()->id)
+                ->skip($start)
+                ->take($end)
+                ->get(),
+            'totalItems' => Route::where('userID', $request->user()->id)->count(),
             'message' => 'Маршруты',
         ]);
     }

@@ -32,7 +32,7 @@ const _router = new Router({
             }
         },
         {
-            path: '/routes',
+            path: '/routes/:page?',
             name: 'routes',
             components: {
                 default: () => import('../components/Routes')

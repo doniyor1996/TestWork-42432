@@ -19,21 +19,50 @@
                 <div v-else-if="error" class="alert alert-danger" role="alert">
                     {{error}}
                 </div>
-                <ul v-if="routes.length" class="routes">
-                    <li v-for="route in routes" class="d-flex justify-content-between border-bottom">
-                        <span>{{ route.name }}</span>
-                        <div class="d-flex">
-                            <div class="route-action mr-2" @click="_editRoute(route)">
-                                &#9998;
+                <template v-if="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </template>
+                <template v-else>
+                    <ul v-if="routes.length" class="routes">
+                        <li v-for="route in routes" class="d-flex justify-content-between border-bottom">
+                            <span>{{ route.name }}</span>
+                            <div class="d-flex">
+                                <div class="route-action mr-2" @click="_editRoute(route)">
+                                    &#9998;
+                                </div>
+                                <div class="route-action" @click="_deleteRoute(route.id)">
+                                    ❌
+                                </div>
                             </div>
-                            <div class="route-action" @click="_deleteRoute(route.id)">
-                                ❌
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div v-else>
-                    У вас нет ни одного маршрута
+                        </li>
+                    </ul>
+                    <div v-else>
+                        У вас нет ни одного маршрута
+                    </div>
+                </template>
+                <div v-if="totalPages > 1">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li :class="'page-item' + (page === 1 ? ' disabled' : '')">
+                                <router-link class="page-link"
+                                             :disabled="page === 1"
+                                             tabindex="-1"
+                                             :to="'/routes' + (page > 1 ? '/' + (page - 1) : '')">
+                                    Пред.
+                                </router-link>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">{{page}}</a>
+                            </li>
+                            <li :class="'page-item' + (page >= totalPages ? ' disabled' : '')">
+                                <router-link
+                                    :disabled="page >= totalPages"
+                                    class="page-link" :to="'/routes/' + (page + 1)">След.</router-link>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -46,6 +75,8 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
     mounted() {
+        this.page = this.$route.params.page > 0 ? this.$route.params.page * 1 : 1;
+        this.setCurrentPage(this.page);
         this.getRoutes();
     },
     data() {
@@ -53,12 +84,15 @@ export default {
             edit_id: false,
             error: false,
             success: false,
-            routeName: ''
+            routeName: '',
+            page: ''
         }
     },
     computed: {
         ...mapGetters([
-            'routes'
+            'routes',
+            'totalPages',
+            'loading'
         ])
     },
     methods: {
@@ -66,7 +100,8 @@ export default {
             'getRoutes',
             'createRoute',
             'updateRoute',
-            'deleteRoute'
+            'deleteRoute',
+            'setCurrentPage'
         ]),
         addSuccessMessage(message) {
             this.success = message;

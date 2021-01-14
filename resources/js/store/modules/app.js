@@ -4,12 +4,20 @@ export default {
     state: {
         is_authorised: false,
         access_token: '',
-        routes: []
+        routes: [],
+        currentPage: 1,
+        totalPages: 1,
+        itemsPerPage: 5,
+        loading: false
     },
     getters: {
         is_authorised: state => state.is_authorised,
         access_token: state => state.access_token,
         routes: state => state.routes,
+        currentPage: state => state.currentPage,
+        totalPages: state => state.totalPages,
+        itemsPerPage: state => state.itemsPerPage,
+        loading: state => state.loading
     },
     mutations: {
         'SET_STORE'(state, products) {
@@ -30,6 +38,18 @@ export default {
         },
         'SET_ROUTES'(state, routes) {
             state.routes = routes;
+        },
+        'SET_ITEMS_PER_PAGE'(state, number) {
+            state.itemsPerPage = number;
+        },
+        'SET_TOTAL_PAGES'(state, number) {
+            state.totalPages = number;
+        },
+        'SET_CURRENT_PAGE'(state, number) {
+            state.currentPage = number;
+        },
+        'SET_LOADING'(state, bool) {
+            state.loading = !!bool;
         }
     },
     actions: {
@@ -46,6 +66,13 @@ export default {
             commit('LOG_OUT');
             commit('SET_ROUTES', []);
         },
+        setCurrentPage({commit, dispatch}, number) {
+            commit('SET_CURRENT_PAGE', number);
+        },
+        itemsPerPage({commit, dispatch}, number) {
+            commit('SET_ITEMS_PER_PAGE', number);
+            dispatch('getRoutes');
+        },
         register: async ({commit}, {name, email, password, password_confirmation}) => {
             let response = await $axios.post('register', {name, email, password, password_confirmation});
             if (response.data.error)
@@ -53,10 +80,14 @@ export default {
             else
                 return {result: true, message: 'Вы успешно зарегистрировались!'}
         },
-        getRoutes: ({commit}) => {
-            $axios.get('routes').then(response => {
-                commit('SET_ROUTES', response.data.routes)
-            })
+        getRoutes: ({commit, state}) => {
+            commit('SET_LOADING', true);
+            let start = state.itemsPerPage * state.currentPage - state.itemsPerPage;
+            $axios.get('routes?start=' + start + '&limit=' + state.itemsPerPage).then(response => {
+                commit('SET_ROUTES', response.data.routes);
+                commit('SET_LOADING', false);
+                commit('SET_TOTAL_PAGES', Math.ceil(response.data.totalItems / state.itemsPerPage));
+            });
         },
         createRoute: async ({commit, dispatch}, {name}) => {
             let response = await $axios.post('route/add', {name});
