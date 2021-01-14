@@ -48,6 +48,7 @@
                     </div>
                 </template>
                 <div v-if="totalPages > 1">
+                    показано {{page}} из {{totalPages}} страниц
                     <nav aria-label="...">
                         <ul class="pagination">
                             <li :class="'page-item' + (page === 1 ? ' disabled' : '')">
