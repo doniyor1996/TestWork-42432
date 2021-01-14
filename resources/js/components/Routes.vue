@@ -13,7 +13,7 @@
                         <button class="btn btn-primary">
                             {{ edit_id ? 'Сохранить' : 'Добавить' }}
                         </button>
-                        <button v-if="edit_id" @click.prevent="_editRoute({id:edit_id})" class="btn btn-light mt-2">
+                        <button v-if="edit_id" @click.prevent="_editRouteToggle({id:edit_id})" class="btn btn-light mt-2">
                             Отменить
                         </button>
                     </div>
@@ -34,7 +34,7 @@
                         <li v-for="route in routes" class="d-flex justify-content-between border-bottom">
                             <span>{{ route.name }}</span>
                             <div class="d-flex">
-                                <div class="route-action mr-2" @click="_editRoute(route)">
+                                <div class="route-action mr-2" @click="_editRouteToggle(route)">
                                     &#9998;
                                 </div>
                                 <div class="route-action" @click="_deleteRoute(route.id)">
@@ -135,7 +135,7 @@ export default {
                     this.addErrorMessage('Ошибка при создании маршрута');
             });
         },
-        _editRoute(route) {
+        _editRouteToggle(route) {
             if (this.edit_id === route.id) {
                 this.edit_id = '';
                 this.routeName = '';
