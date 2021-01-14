@@ -18,10 +18,20 @@ Route::get('/sanctum/csrf-cookie', \Laravel\Sanctum\Http\Controllers\CsrfCookieC
 
 Route::middleware('auth:sanctum')
     ->group(function () {
-        Route::get('/logout','App\Http\Controllers\LoginController@logout')
+        Route::get('/logout','App\Http\Controllers\Auth\LoginController@logout')
             ->name('logout.api');
         Route::get('/user','App\Http\Controllers\UserController@userdata')
             ->name('user.api');
+
+        Route::get('/routes','App\Http\Controllers\RouteController@index');
+
+        Route::post('/route/add','App\Http\Controllers\RouteController@add');
+
+        Route::post('/route/update/{id}','App\Http\Controllers\RouteController@update')
+            ->where('id', '[0-9]+');
+
+        Route::get('/route/delete/{id}','App\Http\Controllers\RouteController@delete')
+            ->where('id', '[0-9]+');
     });
 
 Route::post('/register','App\Http\Controllers\Auth\RegisterController@register')

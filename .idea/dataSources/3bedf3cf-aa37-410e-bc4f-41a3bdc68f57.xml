@@ -990,778 +990,864 @@ ALL PRIVILEGES|u38027\_%
     <table id="307" parent="5" name="player_member">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="308" parent="5" name="referee">
+    <table id="308" parent="5" name="points">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="309" parent="5" name="season">
+    <table id="309" parent="5" name="referee">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="310" parent="5" name="stage">
+    <table id="310" parent="5" name="routes">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="311" parent="5" name="team">
+    <table id="311" parent="5" name="season">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="312" parent="5" name="team_member">
+    <table id="312" parent="5" name="stage">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="313" parent="5" name="users">
+    <table id="313" parent="5" name="team">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="314" parent="298" name="id">
+    <table id="314" parent="5" name="team_member">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="315" parent="5" name="users">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="316" parent="298" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="315" parent="298" name="MatchID">
+    <column id="317" parent="298" name="MatchID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="316" parent="298" name="TeamID">
+    <column id="318" parent="298" name="TeamID">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="317" parent="298" name="PlayerID">
+    <column id="319" parent="298" name="PlayerID">
       <Position>4</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="318" parent="298" name="Type">
+    <column id="320" parent="298" name="Type">
       <Position>5</Position>
       <Comment>0 - жк, 1-красный</Comment>
       <DataType>tinyint(3) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="298" name="Time">
+    <column id="321" parent="298" name="Time">
       <Position>6</Position>
       <Comment>Время внутри игры (0-50 или 0-90)</Comment>
       <DataType>tinyint(3) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="320" parent="298" name="card_matchid_foreign">
+    <index id="322" parent="298" name="card_matchid_foreign">
       <ColNames>MatchID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="298" name="card_teamid_foreign">
+    <index id="323" parent="298" name="card_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="322" parent="298" name="card_playerid_foreign">
+    <index id="324" parent="298" name="card_playerid_foreign">
       <ColNames>PlayerID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="323" parent="298" name="PRIMARY">
+    <key id="325" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="324" parent="298" name="card_matchid_foreign">
+    <foreign-key id="326" parent="298" name="card_matchid_foreign">
       <ColNames>MatchID</ColNames>
       <RefTableName>match</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="325" parent="298" name="card_teamid_foreign">
+    <foreign-key id="327" parent="298" name="card_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="326" parent="298" name="card_playerid_foreign">
+    <foreign-key id="328" parent="298" name="card_playerid_foreign">
       <ColNames>PlayerID</ColNames>
       <RefTableName>player</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="327" parent="299" name="id">
+    <column id="329" parent="299" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="328" parent="299" name="uuid">
+    <column id="330" parent="299" name="uuid">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="329" parent="299" name="connection">
+    <column id="331" parent="299" name="connection">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="330" parent="299" name="queue">
+    <column id="332" parent="299" name="queue">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="331" parent="299" name="payload">
+    <column id="333" parent="299" name="payload">
       <Position>5</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="332" parent="299" name="exception">
+    <column id="334" parent="299" name="exception">
       <Position>6</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="333" parent="299" name="failed_at">
+    <column id="335" parent="299" name="failed_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="334" parent="299" name="failed_jobs_uuid_unique">
+    <index id="336" parent="299" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="335" parent="299" name="PRIMARY">
+    <key id="337" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="336" parent="299" name="failed_jobs_uuid_unique">
+    <key id="338" parent="299" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
     </key>
-    <column id="337" parent="300" name="id">
+    <column id="339" parent="300" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="338" parent="300" name="MatchID">
+    <column id="340" parent="300" name="MatchID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="339" parent="300" name="TeamID">
+    <column id="341" parent="300" name="TeamID">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="340" parent="300" name="PlayerID">
+    <column id="342" parent="300" name="PlayerID">
       <Position>4</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="341" parent="300" name="AssistantID">
+    <column id="343" parent="300" name="AssistantID">
       <Position>5</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="342" parent="300" name="GoalType">
+    <column id="344" parent="300" name="GoalType">
       <Position>6</Position>
       <Comment>0 - гол в игре, 1-со штрафного, 2 с пенальти</Comment>
       <DataType>tinyint(3) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="343" parent="300" name="Time">
+    <column id="345" parent="300" name="Time">
       <Position>7</Position>
       <Comment>Время внутри игры (0-50 или 0-90)</Comment>
       <DataType>tinyint(3) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="344" parent="300" name="goal_matchid_foreign">
+    <index id="346" parent="300" name="goal_matchid_foreign">
       <ColNames>MatchID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="345" parent="300" name="goal_teamid_foreign">
+    <index id="347" parent="300" name="goal_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="346" parent="300" name="goal_playerid_foreign">
+    <index id="348" parent="300" name="goal_playerid_foreign">
       <ColNames>PlayerID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="347" parent="300" name="goal_assistantid_foreign">
+    <index id="349" parent="300" name="goal_assistantid_foreign">
       <ColNames>AssistantID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="348" parent="300" name="PRIMARY">
+    <key id="350" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="349" parent="300" name="goal_matchid_foreign">
+    <foreign-key id="351" parent="300" name="goal_matchid_foreign">
       <ColNames>MatchID</ColNames>
       <RefTableName>match</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="350" parent="300" name="goal_teamid_foreign">
+    <foreign-key id="352" parent="300" name="goal_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="351" parent="300" name="goal_playerid_foreign">
+    <foreign-key id="353" parent="300" name="goal_playerid_foreign">
       <ColNames>PlayerID</ColNames>
       <RefTableName>player</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="352" parent="300" name="goal_assistantid_foreign">
+    <foreign-key id="354" parent="300" name="goal_assistantid_foreign">
       <ColNames>AssistantID</ColNames>
       <RefTableName>player</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="353" parent="301" name="id">
+    <column id="355" parent="301" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="354" parent="301" name="Name">
+    <column id="356" parent="301" name="Name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="355" parent="301" name="created_at">
+    <column id="357" parent="301" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="356" parent="301" name="updated_at">
+    <column id="358" parent="301" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="357" parent="301" name="PRIMARY">
+    <key id="359" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="358" parent="302" name="id">
+    <column id="360" parent="302" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="359" parent="302" name="StageID">
+    <column id="361" parent="302" name="StageID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="302" name="HomeTeamID">
+    <column id="362" parent="302" name="HomeTeamID">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="302" name="GuestTeamID">
+    <column id="363" parent="302" name="GuestTeamID">
       <Position>4</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="302" name="RefereeID">
+    <column id="364" parent="302" name="RefereeID">
       <Position>5</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="363" parent="302" name="IsCompleted">
+    <column id="365" parent="302" name="IsCompleted">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="364" parent="302" name="Date">
+    <column id="366" parent="302" name="Date">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="365" parent="302" name="match_stageid_foreign">
+    <index id="367" parent="302" name="match_stageid_foreign">
       <ColNames>StageID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="366" parent="302" name="match_hometeamid_foreign">
+    <index id="368" parent="302" name="match_hometeamid_foreign">
       <ColNames>HomeTeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="367" parent="302" name="match_guestteamid_foreign">
+    <index id="369" parent="302" name="match_guestteamid_foreign">
       <ColNames>GuestTeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="368" parent="302" name="match_refereeid_foreign">
+    <index id="370" parent="302" name="match_refereeid_foreign">
       <ColNames>RefereeID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="369" parent="302" name="PRIMARY">
+    <key id="371" parent="302" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="370" parent="302" name="match_stageid_foreign">
+    <foreign-key id="372" parent="302" name="match_stageid_foreign">
       <ColNames>StageID</ColNames>
       <RefTableName>stage</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="371" parent="302" name="match_hometeamid_foreign">
+    <foreign-key id="373" parent="302" name="match_hometeamid_foreign">
       <ColNames>HomeTeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="372" parent="302" name="match_guestteamid_foreign">
+    <foreign-key id="374" parent="302" name="match_guestteamid_foreign">
       <ColNames>GuestTeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="373" parent="302" name="match_refereeid_foreign">
+    <foreign-key id="375" parent="302" name="match_refereeid_foreign">
       <ColNames>RefereeID</ColNames>
       <RefTableName>referee</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="374" parent="303" name="id">
+    <column id="376" parent="303" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="375" parent="303" name="migration">
+    <column id="377" parent="303" name="migration">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="376" parent="303" name="batch">
+    <column id="378" parent="303" name="batch">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="377" parent="303" name="PRIMARY">
+    <key id="379" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="378" parent="304" name="email">
+    <column id="380" parent="304" name="email">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="379" parent="304" name="token">
+    <column id="381" parent="304" name="token">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="380" parent="304" name="created_at">
+    <column id="382" parent="304" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="381" parent="304" name="password_resets_email_index">
+    <index id="383" parent="304" name="password_resets_email_index">
       <ColNames>email</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="382" parent="305" name="id">
+    <column id="384" parent="305" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="383" parent="305" name="tokenable_type">
+    <column id="385" parent="305" name="tokenable_type">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="384" parent="305" name="tokenable_id">
+    <column id="386" parent="305" name="tokenable_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="385" parent="305" name="name">
+    <column id="387" parent="305" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="386" parent="305" name="token">
+    <column id="388" parent="305" name="token">
       <Position>5</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="387" parent="305" name="abilities">
+    <column id="389" parent="305" name="abilities">
       <Position>6</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="388" parent="305" name="last_used_at">
+    <column id="390" parent="305" name="last_used_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="389" parent="305" name="created_at">
+    <column id="391" parent="305" name="created_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="390" parent="305" name="updated_at">
+    <column id="392" parent="305" name="updated_at">
       <Position>9</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="391" parent="305" name="personal_access_tokens_token_unique">
+    <index id="393" parent="305" name="personal_access_tokens_token_unique">
       <ColNames>token</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="392" parent="305" name="personal_access_tokens_tokenable_type_tokenable_id_index">
+    <index id="394" parent="305" name="personal_access_tokens_tokenable_type_tokenable_id_index">
       <ColNames>tokenable_type
 tokenable_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="393" parent="305" name="PRIMARY">
+    <key id="395" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="394" parent="305" name="personal_access_tokens_token_unique">
+    <key id="396" parent="305" name="personal_access_tokens_token_unique">
       <ColNames>token</ColNames>
       <UnderlyingIndexName>personal_access_tokens_token_unique</UnderlyingIndexName>
     </key>
-    <column id="395" parent="306" name="id">
+    <column id="397" parent="306" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="396" parent="306" name="TeamID">
+    <column id="398" parent="306" name="TeamID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="397" parent="306" name="LastName">
+    <column id="399" parent="306" name="LastName">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="398" parent="306" name="FirstName">
+    <column id="400" parent="306" name="FirstName">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="399" parent="306" name="BirthYear">
+    <column id="401" parent="306" name="BirthYear">
       <Position>5</Position>
       <DataType>year(4)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="400" parent="306" name="created_at">
+    <column id="402" parent="306" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="401" parent="306" name="updated_at">
+    <column id="403" parent="306" name="updated_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="402" parent="306" name="player_teamid_foreign">
+    <index id="404" parent="306" name="player_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="403" parent="306" name="PRIMARY">
+    <key id="405" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="404" parent="306" name="player_teamid_foreign">
+    <foreign-key id="406" parent="306" name="player_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="405" parent="307" name="id">
+    <column id="407" parent="307" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="406" parent="307" name="TeamID">
+    <column id="408" parent="307" name="TeamID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="407" parent="307" name="SeasonID">
+    <column id="409" parent="307" name="SeasonID">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="408" parent="307" name="Left">
+    <column id="410" parent="307" name="Left">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="409" parent="307" name="LastStageID">
+    <column id="411" parent="307" name="LastStageID">
       <Position>5</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="410" parent="307" name="player_member_teamid_foreign">
+    <index id="412" parent="307" name="player_member_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="411" parent="307" name="player_member_seasonid_foreign">
+    <index id="413" parent="307" name="player_member_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="412" parent="307" name="player_member_laststageid_foreign">
+    <index id="414" parent="307" name="player_member_laststageid_foreign">
       <ColNames>LastStageID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="413" parent="307" name="PRIMARY">
+    <key id="415" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="414" parent="307" name="player_member_teamid_foreign">
+    <foreign-key id="416" parent="307" name="player_member_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="415" parent="307" name="player_member_seasonid_foreign">
+    <foreign-key id="417" parent="307" name="player_member_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <RefTableName>season</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="416" parent="307" name="player_member_laststageid_foreign">
+    <foreign-key id="418" parent="307" name="player_member_laststageid_foreign">
       <ColNames>LastStageID</ColNames>
       <RefTableName>stage</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="417" parent="308" name="id">
+    <column id="419" parent="308" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="418" parent="308" name="Name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="419" parent="308" name="created_at">
-      <Position>3</Position>
-      <DataType>timestamp|0s</DataType>
-    </column>
-    <column id="420" parent="308" name="updated_at">
-      <Position>4</Position>
-      <DataType>timestamp|0s</DataType>
-    </column>
-    <key id="421" parent="308" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="422" parent="309" name="id">
-      <Position>1</Position>
-      <DataType>bigint(20) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="423" parent="309" name="LeagueID">
+    <column id="420" parent="308" name="routeID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="424" parent="309" name="Name">
+    <column id="421" parent="308" name="address">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="425" parent="309" name="created_at">
+    <column id="422" parent="308" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="426" parent="309" name="updated_at">
+    <column id="423" parent="308" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="427" parent="309" name="season_leagueid_foreign">
-      <ColNames>LeagueID</ColNames>
+    <index id="424" parent="308" name="points_routeid_foreign">
+      <ColNames>routeID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="428" parent="309" name="PRIMARY">
+    <key id="425" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="429" parent="309" name="season_leagueid_foreign">
+    <foreign-key id="426" parent="308" name="points_routeid_foreign">
+      <ColNames>routeID</ColNames>
+      <RefTableName>routes</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="427" parent="309" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="428" parent="309" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="429" parent="309" name="created_at">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="430" parent="309" name="updated_at">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <key id="431" parent="309" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="432" parent="310" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="433" parent="310" name="userID">
+      <Position>2</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="434" parent="310" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="435" parent="310" name="created_at">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="436" parent="310" name="updated_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <index id="437" parent="310" name="routes_userid_foreign">
+      <ColNames>userID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="438" parent="310" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="439" parent="310" name="routes_userid_foreign">
+      <ColNames>userID</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="440" parent="311" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="441" parent="311" name="LeagueID">
+      <Position>2</Position>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="442" parent="311" name="Name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="443" parent="311" name="created_at">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="444" parent="311" name="updated_at">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <index id="445" parent="311" name="season_leagueid_foreign">
+      <ColNames>LeagueID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="446" parent="311" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="447" parent="311" name="season_leagueid_foreign">
       <ColNames>LeagueID</ColNames>
       <RefTableName>league</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="430" parent="310" name="id">
+    <column id="448" parent="312" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="431" parent="310" name="SeasonID">
+    <column id="449" parent="312" name="SeasonID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="432" parent="310" name="Name">
+    <column id="450" parent="312" name="Name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="433" parent="310" name="created_at">
+    <column id="451" parent="312" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="434" parent="310" name="updated_at">
+    <column id="452" parent="312" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="435" parent="310" name="stage_seasonid_foreign">
+    <index id="453" parent="312" name="stage_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="436" parent="310" name="PRIMARY">
+    <key id="454" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="437" parent="310" name="stage_seasonid_foreign">
+    <foreign-key id="455" parent="312" name="stage_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <RefTableName>season</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="438" parent="311" name="id">
+    <column id="456" parent="313" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="439" parent="311" name="Name">
+    <column id="457" parent="313" name="Name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="440" parent="311" name="created_at">
+    <column id="458" parent="313" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="441" parent="311" name="updated_at">
+    <column id="459" parent="313" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="442" parent="311" name="PRIMARY">
+    <key id="460" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="443" parent="312" name="id">
+    <column id="461" parent="314" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="444" parent="312" name="TeamID">
+    <column id="462" parent="314" name="TeamID">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="445" parent="312" name="SeasonID">
+    <column id="463" parent="314" name="SeasonID">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="446" parent="312" name="Left">
+    <column id="464" parent="314" name="Left">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="447" parent="312" name="LastStageID">
+    <column id="465" parent="314" name="LastStageID">
       <Position>5</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="448" parent="312" name="team_member_teamid_foreign">
+    <index id="466" parent="314" name="team_member_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="449" parent="312" name="team_member_seasonid_foreign">
+    <index id="467" parent="314" name="team_member_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="450" parent="312" name="team_member_laststageid_foreign">
+    <index id="468" parent="314" name="team_member_laststageid_foreign">
       <ColNames>LastStageID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="451" parent="312" name="PRIMARY">
+    <key id="469" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="452" parent="312" name="team_member_teamid_foreign">
+    <foreign-key id="470" parent="314" name="team_member_teamid_foreign">
       <ColNames>TeamID</ColNames>
       <RefTableName>team</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="453" parent="312" name="team_member_seasonid_foreign">
+    <foreign-key id="471" parent="314" name="team_member_seasonid_foreign">
       <ColNames>SeasonID</ColNames>
       <RefTableName>season</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="454" parent="312" name="team_member_laststageid_foreign">
+    <foreign-key id="472" parent="314" name="team_member_laststageid_foreign">
       <ColNames>LastStageID</ColNames>
       <RefTableName>stage</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="455" parent="313" name="id">
+    <column id="473" parent="315" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="456" parent="313" name="name">
+    <column id="474" parent="315" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="457" parent="313" name="email">
+    <column id="475" parent="315" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="458" parent="313" name="email_verified_at">
+    <column id="476" parent="315" name="email_verified_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="459" parent="313" name="password">
+    <column id="477" parent="315" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="460" parent="313" name="remember_token">
+    <column id="478" parent="315" name="remember_token">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="461" parent="313" name="created_at">
+    <column id="479" parent="315" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="462" parent="313" name="updated_at">
+    <column id="480" parent="315" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="463" parent="313" name="users_email_unique">
+    <index id="481" parent="315" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="464" parent="313" name="PRIMARY">
+    <key id="482" parent="315" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="465" parent="313" name="users_email_unique">
+    <key id="483" parent="315" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>

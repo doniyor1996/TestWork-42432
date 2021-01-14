@@ -53,6 +53,7 @@ export default {
             'login'
         ]),
         _login() {
+            this.error = false;
             let data = {
                 email: this.email,
                 password: this.password

@@ -31,6 +31,16 @@ const _router = new Router({
                 default: () => import('../components/Register')
             }
         },
+        {
+            path: '/routes',
+            name: 'routes',
+            components: {
+                default: () => import('../components/Routes')
+            },
+            meta: {
+                needAuth: true
+            }
+        },
     ]
 });
 

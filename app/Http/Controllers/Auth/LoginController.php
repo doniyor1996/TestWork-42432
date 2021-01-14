@@ -52,13 +52,13 @@ class LoginController extends Controller
             return response()->json([
                 'status_code' => 500,
                 'message' => 'Error in login',
-                'error' => $error,
+                'error' => $error->getMessage(),
             ]);
         }
     }
 
     public function logout(){
-        Auth::user()->token()->delete();
+        Auth::user()->currentAccessToken()->delete();
         return response()->json([
             'status_code' => 200,
             'message' => 'Logout successfull',

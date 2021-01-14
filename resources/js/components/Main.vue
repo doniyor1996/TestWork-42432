@@ -9,7 +9,6 @@
                         документация апи расположена на swaggerhub(не успел)
                         <div class="list-group mt-4">
                             <router-link class="list-group-item" to="/routes">Маршруты</router-link>
-                            <router-link class="list-group-item" to="/points">Точки</router-link>
                         </div>
                     </div>
                 </div>
