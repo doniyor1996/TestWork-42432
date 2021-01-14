@@ -85,6 +85,10 @@ export default {
         this.setCurrentPage(this.page);
         this.getRoutes();
     },
+    updated() {
+        if (this.page > 1 && this.routes.length === 0)
+            this.$router.push({name:'routes'});
+    },
     data() {
         return {
             edit_id: false,
