@@ -44,6 +44,7 @@ export default {
         },
         logout: ({commit}) => {
             commit('LOG_OUT');
+            commit('SET_ROUTES', []);
         },
         register: async ({commit}, {name, email, password, password_confirmation}) => {
             let response = await $axios.post('register', {name, email, password, password_confirmation});

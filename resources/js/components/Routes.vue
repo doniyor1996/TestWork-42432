@@ -17,7 +17,7 @@
                     {{success}}
                 </div>
                 <div v-else-if="error" class="alert alert-danger" role="alert">
-                    Ошибка при создании маршрута
+                    {{error}}
                 </div>
                 <ul v-if="routes.length" class="routes">
                     <li v-for="route in routes" class="d-flex justify-content-between border-bottom">
@@ -91,7 +91,8 @@ export default {
                 if (res) {
                     this.routeName = '';
                     this.addSuccessMessage('Маршрут успешно создан');
-                }
+                } else
+                    this.addErrorMessage('Ошибка при создании маршрута');
             });
         },
         _editRoute(route) {
@@ -109,11 +110,12 @@ export default {
             })
         },
         _deleteRoute(id) {
-            this.deleteRoute({id}).then(res => {
-                res ?
-                    this.addSuccessMessage('Маршрут удалён')
-                    : this.addErrorMessage('Ошибка при удалении');
-            });
+            if (confirm('Удалить маршрут?'))
+                this.deleteRoute({id}).then(res => {
+                    res ?
+                        this.addSuccessMessage('Маршрут удалён')
+                        : this.addErrorMessage('Ошибка при удалении');
+                });
         },
     }
 }
